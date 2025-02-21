@@ -13,6 +13,9 @@ RUN apt-get update -qq && \
 COPY --link bun.lock package.json ./
 RUN bun install --ci
 
+COPY --link frontend/bun.locck frontend/package.json ./frontend/
+RUN cd frontend && bun install --ci
+
 COPY --link . .
 
 FROM base
